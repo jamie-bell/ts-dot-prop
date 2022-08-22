@@ -219,8 +219,8 @@ function _paths(obj: object, lead: string[]): string[] {
       lead.push(key);
       output = output.concat(_paths(obj[key], lead));
 
-      // reset path lead for next object
-      lead = [];
+      // pop the most recent path lead for next object
+      lead.pop();
     } else {
       const path: string = lead.length ? `${lead.join('.')}.${key}` : key;
       output.push(path);
